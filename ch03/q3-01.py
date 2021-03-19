@@ -12,7 +12,7 @@ class stack:
 # TODO: Refactor to use dynamic number of stacks
 
 class moving_stacks:
-    def __init__(self, size)
+    def __init__(self, size):
         self.array = [0 for _ in range(size)]
         self.stack1head = 0
         self.stack2head = int(size*(1/3))
@@ -23,12 +23,12 @@ class moving_stacks:
         self.edgecase = len(array) * -1
     
     def push(self, stack, object):
-        if self._is_stack_full: raise ValueError()
+        if self._is_stack_full(): raise ValueError()
         
-        if !_can_push(stack)
-            if _can_push(_next_stack(stack)):
-             self._move_stack(_next_stack(stack)
-             else:
+        if _can_push(stack) == False:
+            if _can_push(_next_stack(stack)) == False:
+                self._move_stack(_next_stack(stack)
+            else:
                 self._move_stack(_next_stack(_next_stack(stack)))
                 self._move_stack(_next_stack(stack))
 

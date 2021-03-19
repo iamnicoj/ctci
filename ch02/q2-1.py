@@ -20,7 +20,7 @@ def remove_dups(linked_list):
         
         anchor = anchor.next
 
-
+####################################
 myll = linked_list()
 
 remove_dups(myll)

@@ -28,7 +28,7 @@ class linked_list:
             temp = temp.next
     
     def remove(self, data):
-        if self.head is None: 
+        if self.head is None: return None
         elif self.head.item == data:
             self.head = self.head.next
             self.count -= self.count
