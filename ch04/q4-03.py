@@ -39,9 +39,34 @@ def _inner_level_transverse(node, all_depths, level):
     _inner_level_transverse(node.left, all_depths, level + 1)
     _inner_level_transverse(node.right, all_depths, level + 1)
 
-    
+def list_of_all_depths_i(tree):
+    if tree is None or tree.head is None:
+        return []
+    all_depths = []
+    queue = []  
+    queue.append(tree.head)
 
-    
+    while len(queue) > 0:
+        # TODO where to initialize level
+        level = []
+        level_length = len(queue)
+
+        temp_queue =[]
+
+        for _ in range(level_length):
+            current = queue.pop() 
+            temp_queue.append(current)
+            level += [current.data]
+        all_depths.append(level)
+
+        while len(temp_queue) > 0:
+            current = temp_queue.pop()
+            if current.left is not None:
+                queue.append(current.left)
+            if current.right is not None:
+                queue.append(current.right)        
+    return all_depths
+
 
 #########################
 my_tree = avl_tree()
@@ -57,4 +82,5 @@ print(list_of_a_depth(my_tree, 5))
 
 print(list_of_all_depths(my_tree))
 
+print(list_of_all_depths_i(my_tree))
  
