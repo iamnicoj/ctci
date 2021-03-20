@@ -73,9 +73,10 @@ class linked_list:
             item = queue.pop(0)
             self.add(item)
 
-    def print_list (self):
+    def __str__ (self):
         temp = self.head
+        val = ''
         while temp is not None:
-            print(temp.item)
+            val = val + ' ' + str(temp.item)
             temp = temp.next
-
+        return val
