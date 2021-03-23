@@ -1,25 +1,46 @@
-def palindrome_permutation(string):
-    bitvector = [0 for _ in range(127)]
-    count_odds = 0
+def one_way(str_a, str_b):
+    len_a = len(str_a)
+    len_b = len(str_b)
 
-    for char in string:
-        char_value = ord(char.lower())
-        if char_value >= 97 and char_value <= 122:
-            bitvector[char_value] += 1
-            if bitvector[char_value] % 2 == 1:
-                count_odds += 1
+    if abs(len_a - len_b) > 1:
+        return False
+
+    one_way = 0
+    j = 0
+    shortest = len_b if len_a > len_b else len_a
+    for i in range(shortest):
+        if str_a[i] == str_b[j]:
+            j += 1
+        elif one_way > 1:
+            return False      
+        elif len_a > len_b:
+            if str_a[i + 1] == str_b[j]:
+                one_way += 1
             else:
-                count_odds -= 1
-    
-    return count_odds <= 1
+                return False
+        elif len_a < len_b:
+            if str_a[i] == str_b[j + 1]:
+                one_way += 1
+                j += 2
+            else:
+                return False
+        else:
+            j += 1
+            one_way += 1
+    return True
 
 
-def example():
-    print(palindrome_permutation('test'))  # False
-    print(palindrome_permutation('Test ES'))  # False
-    print(palindrome_permutation('Tact Coa'))  # True ('taco cat', 'acto cta', etc )
-    print(palindrome_permutation('cosa nostra ctr'))  # true ('cos atrnr tasoc')
 
+def tests():
+    print(one_way('pale', 'pa'))  ## False
+    print(one_way('pa', 'pale'))  ## False
+    print(one_way('pale', 'ple'))  ## True
+    print(one_way('pales', 'pale'))  ## True
+    print(one_way('ples', 'pales'))  ## True
+    print(one_way('paless', 'palea'))  ## False
+    print(one_way('palea', 'paless'))  ## False
+    print(one_way('pale', 'bale'))  ## True
+    print(one_way('pales', 'bake'))  ## False
 
 if __name__ == "__main__":
-    example()
+    tests()
