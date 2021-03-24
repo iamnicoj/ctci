@@ -22,7 +22,7 @@ def validate_bst_2(tree):
     return _inner_v_2(tree.head)
 
 def _inner_v_2(node, min = None, max = None):
-    if node is None:
+    if not node:
         return True
     
     if min and node.data < min or max and node.data > max:
