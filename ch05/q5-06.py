@@ -4,7 +4,7 @@ def conversion(A, B):
     while xor:
         if xor & 1:
             counter += 1
-        xor = xor & (xor -1)
+        xor >>= 1
     return counter
 
 def tests():
